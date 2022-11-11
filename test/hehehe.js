@@ -4,11 +4,13 @@ var galeria = document.getElementById('carousel-wrapper');
 var terminarz = document.getElementById('terminarz');
 var kontakt = document.getElementById('kontakt');
 
-aktualnosci.style.visibility = 'hidden';
+aktualnosci.style.visibility = 'visible';
 cennik.style.visibility = 'hidden';
 galeria.style.visibility = 'hidden';
 terminarz.style.visibility = 'hidden';
 kontakt.style.visibility = 'hidden';
+
+var activeSubPage = 1;
 
 function change(a){
     switch (a){
@@ -18,6 +20,8 @@ function change(a){
             galeria.style.visibility = 'hidden';
             terminarz.style.visibility = 'hidden';
             kontakt.style.visibility = 'hidden';
+            activeSubPage = 1;
+            document.cookie = "activeSubPage=1";
             break
         case 2:
             aktualnosci.style.visibility = 'hidden';
@@ -25,6 +29,7 @@ function change(a){
             galeria.style.visibility = 'hidden';
             terminarz.style.visibility = 'hidden';
             kontakt.style.visibility = 'hidden';
+            activeSubPage = 2;
             break
         case 3:
             aktualnosci.style.visibility = 'hidden';
@@ -32,6 +37,7 @@ function change(a){
             galeria.style.visibility = 'visible';
             terminarz.style.visibility = 'hidden';
             kontakt.style.visibility = 'hidden';
+            activeSubPage = 3;
             break
         case 4:
             aktualnosci.style.visibility = 'hidden';
@@ -39,6 +45,7 @@ function change(a){
             galeria.style.visibility = 'hidden';
             terminarz.style.visibility = 'visible';
             kontakt.style.visibility = 'hidden';
+            activeSubPage = 4;
             break
         case 5:
             aktualnosci.style.visibility = 'hidden';
@@ -46,29 +53,50 @@ function change(a){
             galeria.style.visibility = 'hidden';
             terminarz.style.visibility = 'hidden';
             kontakt.style.visibility = 'visible';
+            activeSubPage = 5;
             break
     }
 }
+
+var inputValue;
+
 function replaceNode(a){
     let element = document.getElementById(a);
     if(element.innerHTML == ""){
         let input = document.createElement("input");
         input.type = "text";
         input.id = element.id;
+        switch(activeSubPage){
+            case 2:
+                input.id += "priceList";
+                break
+            case 4:
+                input.id += "schedue";
+                break
+        }
         input.name = element.id;
         input.style.width = "99%"
         input.style.height = "99%"
         element.appendChild(input);
         input.focus();
         document.getElementById(input.id).addEventListener('blur', (event) => {
-            siema(a);
+            unfocus(a);
           }, true);
     }
     else if(element.firstChild.nodeType === 3){
-        let inputValue = element.firstChild.nodeValue;
+        inputValue = element.firstChild.nodeValue;
         let input = document.createElement("input");
         input.type = "text";
         input.id = element.id;
+        console.log(activeSubPage);
+        switch(activeSubPage){
+            case 2:
+                input.id += "priceList";
+                break
+            case 4:
+                input.id += "schedue";
+                break
+        }
         input.value = inputValue;
         input.name = element.id;
         input.style.width = "99%"
@@ -76,15 +104,24 @@ function replaceNode(a){
         element.replaceChild(input, element.firstChild);
         input.focus();
         document.getElementById(input.id).addEventListener('blur', (event) => {
-            siema(a);
+            unfocus(a);
           }, true);
     }
 }
 
-function siema(a){
+var i = 1;
+function unfocus(a){
     let element = document.getElementById(a);
     let nodeValue = element.firstChild.value;
-    let node = document.createTextNode(nodeValue);
+    if(nodeValue === undefined){
+        element.innerHTML = null;
+    }
+    else{
+        let node = document.createTextNode(nodeValue);
+     console.log(node);
+    console.log(element.firstChild);
     element.replaceChild(node, element.firstChild);
+    }
+    
 }
 

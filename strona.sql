@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Paź 2022, 20:06
+-- Czas generowania: 11 Lis 2022, 11:34
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.12
 
@@ -72,8 +72,8 @@ INSERT INTO `posts` (`id`, `headline`, `paragrapf`, `deleted`) VALUES
 (9, 'halo', 'kto tam', 0),
 (10, 'halo', 'kto tam', 0),
 (11, 'hej', 'czcze', 0),
-(12, 'hej', 'czcze', 0),
-(13, 'hej', 'czcze', 0);
+(12, 'hej', 'czcze', 1),
+(13, 'hej', 'czcze', 1);
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`) VALUES
-(1, 'piotrek', '2b7c6d7b23062da26c083e79033ca6dede6189fc');
+(1, 'piotrek', '2b7c6d7b23062da26c083e79033ca6dede6189fc'),
+(2, 'piotrekPierdolonyBazan', '2b7c6d7b23062da26c083e79033ca6dede6189fc');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -211,7 +212,7 @@ ALTER TABLE `schedue`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
