@@ -34,7 +34,7 @@ if(isset($_SESSION['klucz1'])){
                     $servername = "localhost";
                     $username = "root";
                     $dbpassword = "";
-                    $dbname = "strona";
+                    $dbname = "silownia";
                 
                     $conn = mysqli_connect($servername, $username, $dbpassword, $dbname);
                     $sql = "SELECT login, password FROM users WHERE login = '$login' AND password= '$shaPassword'";

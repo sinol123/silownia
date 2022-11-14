@@ -77,6 +77,20 @@ body{
   grid-row-end: 10;
 }
 
+#leftBlock{
+  float: left;
+  width: 45%;
+  box-sizing: border-box;
+  margin: 2.5%;
+}
+
+#rightBlock{
+  float: left;
+  width: 45%;
+  box-sizing: border-box;
+  margin: 2.5%;
+}
+
 .siemasiemasiema{
     width: 12.5%;
 }

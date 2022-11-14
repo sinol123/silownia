@@ -88,7 +88,6 @@ function replaceNode(a){
         let input = document.createElement("input");
         input.type = "text";
         input.id = element.id;
-        console.log(activeSubPage);
         switch(activeSubPage){
             case 2:
                 input.id += "priceList";
@@ -113,15 +112,14 @@ var i = 1;
 function unfocus(a){
     let element = document.getElementById(a);
     let nodeValue = element.firstChild.value;
+    console.log(a);
     if(nodeValue === undefined){
-        element.innerHTML = null;
+        element.innerHTML = "";
     }
     else{
         let node = document.createTextNode(nodeValue);
-     console.log(node);
-    console.log(element.firstChild);
-    element.replaceChild(node, element.firstChild);
+        element.replaceChild(node, element.firstChild);
+        document.getElementById(a + "Input").value = nodeValue;
     }
     
 }
-
