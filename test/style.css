@@ -5,6 +5,11 @@ body{
     color: white;
 }
 
+.submit{
+  background-color: rgba(137, 43, 226, 0);
+  color: brown;
+}
+
 .container{
   max-width: 1300px;
   display: grid;

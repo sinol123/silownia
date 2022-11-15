@@ -21,7 +21,6 @@ function change(a){
             terminarz.style.visibility = 'hidden';
             kontakt.style.visibility = 'hidden';
             activeSubPage = 1;
-            document.cookie = "activeSubPage=1";
             break
         case 2:
             aktualnosci.style.visibility = 'hidden';
