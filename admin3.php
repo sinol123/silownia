@@ -3,7 +3,7 @@
 #login check
 session_start();
 if(isset($_SESSION['klucz1'])){
-    header("Location: admin4.php");
+    header("Location: test/test.php");
 }
 ?>
 

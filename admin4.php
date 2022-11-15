@@ -2,7 +2,6 @@
 #login check
 session_start();
 if(isset($_SESSION['klucz1'])){
-    echo "<script>console.log('siema siema')</script>";
 }
 else{
     exit("Fuck Offf");
