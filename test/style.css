@@ -5,9 +5,42 @@ body{
     color: white;
 }
 
-.submit{
-  background-color: rgba(137, 43, 226, 0);
-  color: brown;
+input.submit{
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: white 1px solid;
+  width: 100px;
+  height: 30px;
+}
+
+input.logout{
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: white 1px solid;
+}
+
+#banerImg{
+    height: 160px;
+}
+
+input.submit:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+td.postTd1{
+  width:21px;
+}
+
+div#terminarz{
+  margin-top: 2.5%;
+}
+
+div#cennik{
+  margin-top: 2.5%;
+}
+
+h3{
+  margin-top: 0;
 }
 
 .container{
@@ -47,8 +80,8 @@ body{
 .content{
   grid-column-start:1;
   grid-column-end:6;
-  grid-row-start: 7;
-  grid-row-end: 30;
+  grid-row-start: 6;
+  grid-row-end: 20;
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -82,17 +115,15 @@ body{
   grid-row-end: 10;
 }
 
-#leftBlock{
+div#leftBlock{
   float: left;
   width: 45%;
-  box-sizing: border-box;
   margin: 2.5%;
 }
 
-#rightBlock{
+div#rightBlock{
   float: left;
   width: 45%;
-  box-sizing: border-box;
   margin: 2.5%;
 }
 
@@ -101,7 +132,7 @@ body{
 }
 
 table td:hover{
-    background-color: rgb(67, 69, 71);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .skrrt{

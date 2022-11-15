@@ -19,7 +19,15 @@ require 'content1.php';
     <body>
         <div class="container">
             <div class="banner">
-                <img src="p.svg" alt="zdjęcie">
+                <form action="test.php" method="post">
+                    <p>
+                        <?php
+                            echo $_SESSION['klucz1'];
+                        ?>
+                        <input class="logout" type="submit" name="logout" value="wyloguj">
+                    </p>
+                </form>
+                <img  id="banerImg" src="p.svg" alt="zdjęcie">
             </div>
             <div class="nav">
                 <ul>
@@ -35,7 +43,7 @@ require 'content1.php';
             <div id="sinol" class="content">
                 <div id="leftblock">
                     <form action="test.php" method="post">
-                        <h3>lista postów</h3>
+                        <h3>Lista postów</h3>
                         <table class="postList">
                         <tbody>
                             <?php
@@ -43,6 +51,7 @@ require 'content1.php';
                             ?>
                         </tbody>
                         </table>
+                        <br>
                         <input class="submit" type="submit" name="hideSubmit" value="ukryj">
                         <input class="submit" type="submit" name="showSubmit" value="odkryj">
                     </form>
@@ -51,7 +60,7 @@ require 'content1.php';
                     <form action="test.php" method="post">
                         <h3>Napisz Post</h3>
                         <input required type="text" name="headline" placeholder="nagłówek"><br><br>
-                        <textarea required name="paragrapf" cols="30" rows="10" placeholder="treść"></textarea><br><br>
+                        <textarea required name="paragrapf" cols="70" rows="24" placeholder="treść"></textarea><br><br>
                         <input class="submit" type="submit" name="postSubmit" value="hehehe">
                     </form>
                 </div>
@@ -59,6 +68,7 @@ require 'content1.php';
 
             <!--cennik-->
             <div id="cennik" class="content">
+                <h3>Cennik</h3>
                 <form action="test.php" method="post">
                     <table style="width:100%">
                         <tr>
@@ -68,6 +78,7 @@ require 'content1.php';
                             displayPriceList();
                         ?>
                     </table>
+                    <br>
                     <input class="submit" type="submit" name="priceListSubmit" value="hehehe">
                 </form>
 
@@ -108,6 +119,7 @@ require 'content1.php';
 
             <!--terminarz-->
             <div id="terminarz" class="content">
+                <h3>Terminarz</h3>
                 <form action="test.php" method="post">
                     <table style="width:100%">
                         <tr>
@@ -117,6 +129,7 @@ require 'content1.php';
                             displaySchedue();
                         ?>
                     </table>
+                    <br>
                     <input class="submit" type="submit" value="hehehe" name="schedueUpdate">
                 </form>
             </div>
@@ -138,7 +151,9 @@ require 'content1.php';
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d257611.57911911956!2d-157.3792604724713!3d2.056899439270722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a02a1b43964bd51%3A0xef0431f28d5a2026!2sSand%20Beach%20Restaurant!5e1!3m2!1spl!2spl!4v1641895432170!5m2!1spl!2spl"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
-      
+            <div class="footer">
+                była była była moim ideałem.
+            </div>
         </div>
     </body>
     <script type="text/javascript" src="hehehe.js"></script>

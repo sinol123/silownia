@@ -34,7 +34,7 @@ if(isset($_SESSION['klucz1'])){
                     $servername = "localhost";
                     $username = "root";
                     $dbpassword = "";
-                    $dbname = "silownia";
+                    $dbname = "strona";
                 
                     $conn = mysqli_connect($servername, $username, $dbpassword, $dbname);
                     $sql = "SELECT login, password FROM users WHERE login = '$login' AND password= '$shaPassword'";
@@ -45,7 +45,7 @@ if(isset($_SESSION['klucz1'])){
                             session_start();
                             $_SESSION['klucz1'] = "Jesteś zalogowany jako: ".$row["login"];
                         }
-                        header("Location: admin4.php");
+                        header("Location: test/test.php");
                     }
                     else {
                         echo "nie ma takiego użytkownika :00";

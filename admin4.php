@@ -18,7 +18,7 @@ if(isset($_POST['logout'])){
 $servername = "localhost";
 $username = "root";
 $dbpassword = "";
-$dbname = "silownia";
+$dbname = "strona";
 
 $conn = mysqli_connect($servername, $username, $dbpassword, $dbname);
 

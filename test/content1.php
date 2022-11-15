@@ -2,8 +2,23 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "silownia";
+$dbname = "strona";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+#login check
+session_start();
+if(isset($_SESSION['klucz1'])){
+    
+}
+else{
+    exit("Fuck Offf");
+}
+
+#logout
+if(isset($_POST['logout'])){
+    session_destroy();
+    exit('zostałeś wylogowany');
+}
 
 #pushPost
 if(isset($_POST['postSubmit'])){
