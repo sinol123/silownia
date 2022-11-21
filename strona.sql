@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Lis 2022, 11:34
+-- Czas generowania: 21 Lis 2022, 20:27
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.12
 
@@ -24,24 +24,55 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `cennik`
+-- Struktura tabeli dla tabeli `admins`
 --
 
-CREATE TABLE `cennik` (
+CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
-  `product` text NOT NULL,
-  `price` text NOT NULL
+  `login` text NOT NULL,
+  `password` text NOT NULL,
+  `name` text NOT NULL,
+  `surname` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Zrzut danych tabeli `cennik`
+-- Zrzut danych tabeli `admins`
 --
 
-INSERT INTO `cennik` (`id`, `product`, `price`) VALUES
-(1, 'wejście jednorazowe', '5 złoty'),
-(2, 'karnet miesięczny', '100 złoty'),
-(3, 'karnet 3-miesięczny', '200 złoty'),
-(4, 'karnet roczny', '700 złoty');
+INSERT INTO `admins` (`id`, `login`, `password`, `name`, `surname`) VALUES
+(1, 'piotrek', 'dea8c0b26df7045a4a3da06f969e0686f4493dd9', 'Piotrek', 'Bazan'),
+(2, 'mateusz', 'd6cf83a2462adb38a49e1eccef29cd0439adc43e\r\n', 'Mateusz', 'Cholewa'),
+(3, 'hubert', '57a456b9d1c069db2c2c21d13bbcf1440ac0892e', 'Hubert', 'Langier'),
+(4, 'kacper', '21c6a79a1c2aa72d0c2d8fe5f9bbe747c8c16a28', 'Kacper', 'Tąpolski');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL,
+  `trainerId` int(11) NOT NULL,
+  `duration` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `classes`
+--
+
+INSERT INTO `classes` (`id`, `name`, `description`, `trainerId`, `duration`) VALUES
+(1, 'brak', 'brak zajec', 1, '5 minut'),
+(2, 'pompki', 'góra dół na dywanie', 4, '10 minut'),
+(6, 'bieganie', 'szybko', 3, '2 godziny'),
+(7, 'deska', 'z kulą do kręgli', 4, 'ile wytrzymasz'),
+(12, 'przysiad', 'z kolegami', 2, 'raz'),
+(13, 'pływanie', 'w basenie :00', 2, 'do upadłego'),
+(14, 'żucanie', 'do przodu jak najdalej', 3, '2 rzuty'),
+(15, 'picie', 'piwa na czas', 4, 'jak najszybciej'),
+(16, 'stanie', 'w miejscu jak słup', 6, 'cały dzień');
 
 -- --------------------------------------------------------
 
@@ -63,8 +94,8 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `headline`, `paragrapf`, `deleted`) VALUES
 (1, 'siema', 'eniu', 0),
 (2, 'hehe', 'ghohohoho', 1),
-(3, 'hoho', 'hehe', 0),
-(4, 'hehe', 'ghohohoho', 0),
+(3, 'hoho', 'hehe', 1),
+(4, 'hehe', 'ghohohoho', 1),
 (5, 'hehe', 'ghohohoho', 0),
 (6, 'hehe', 'ghohohoho', 0),
 (7, 'hehe', 'ghohohoho', 0),
@@ -73,28 +104,30 @@ INSERT INTO `posts` (`id`, `headline`, `paragrapf`, `deleted`) VALUES
 (10, 'halo', 'kto tam', 0),
 (11, 'hej', 'czcze', 0),
 (12, 'hej', 'czcze', 1),
-(13, 'hej', 'czcze', 1);
+(13, 'hej', 'czcze', 1),
+(14, 'aha', 'no to super', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `posty`
+-- Struktura tabeli dla tabeli `pricelist`
 --
 
-CREATE TABLE `posty` (
+CREATE TABLE `pricelist` (
   `id` int(11) NOT NULL,
-  `nagluwek` text NOT NULL,
-  `tresc` text NOT NULL
+  `product` text NOT NULL,
+  `price` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Zrzut danych tabeli `posty`
+-- Zrzut danych tabeli `pricelist`
 --
 
-INSERT INTO `posty` (`id`, `nagluwek`, `tresc`) VALUES
-(1, 'hej czy ty wiesz', 'Stoi pociąg na stacji, na drugim peronie\nZa minutę odjedzie już go nie dogonię\nW tym pociągu jedziesz ty, machasz do mnie ręką\nCzuję, że zostałem sam ze swoją piosenką\nHej, czy ty wiesz, że ja się w tobie kocham?\nHej, czy ty wiesz, że to poważna rzecz?\nHej, czy ty wiesz, że zdjęcia twe oglądam?\nHej, szkoda, że już nie zobaczę Cię!\nHej, czy ty wiesz, że ja się w tobie kocham?\nHej, czy ty wiesz, że to poważna rzecz?\nHej, czy ty wiesz, że zdjęcia twe oglądam?\nHej, szkoda, że już nie zobaczę Cię!'),
-(2, 'siema siema', 'Siema siema o tej porze każdy wypić może\r\nJakby nie było jest bardzo miło, nie\r\nNormalnie walimy to co mamy, nie\r\nTak kminimy normalnie\r\nNa lewo to nie jest zgrzewo\r\nJakby nie było jest bardzo miło\r\nZwolnij bo to jest jednokierunkowa\r\nPanie pij od nowa... *gul gul*\r\nDwa łyki były dla filarty stylistyki\r\nTera pijemy pod BWA, bo to jest artykuł 202, nie\r\nEee spoko luzik bluzik... *gul*\r\nFacet z aparatem normalnie sobie jaja kmini\r\nMówiła Myszka Miki, że zdjął kolczyki normalnie\r\nKiedyś był zakuty normalnie w kajdany\r\nAle normalnie dowiedział się od mamy że go rozkuli\r\nTacy byli mili że go normalnie wypuścili (he he he)\r\nJakby nie było będzie bardzo miło...\r\nDobra, co nam jeszcze powiesz?\r\nJa nie wiem proszę cię macie\r\nO tej porze każdy coś powiedzieć może, nie\r\nProszę Panią pochodzimy dwa tygodnie\r\nA potem Panią opuszczę i się normalnie wezmę rozwód w kościele\r\nJak się normalnie zamienisz w aniele...\r\nDobra, powiedz teraz \"Witamy w Jackassie\"\r\nWitamy w przekazie chłopaki nie róbcie draki\r\nPuśćcie to normalnie na internet\r\nPająk Spajdermen normalnie dalej rozrabia\r\nJakby nie było będzie bardzo miło\r\nKtoś dostanie w zęby\r\nTo niech go nie boli bo jest z Nowej Soli, nie\r\n'),
-(3, 'bounty', '- Bounty czy lubię? Mhm, jest okej.\r\n- Mi tam się to podoba, nie wiem, ludzie strasznie narzekają ale imo jest spoko. \r\n- No, niektórzy nie lubią kokosa na przykład, trochę i dlatego\r\n- Kogo jankosa?\r\n- No.\r\n- I co z tym jankosem?\r\n- Ciężko się dziwić');
+INSERT INTO `pricelist` (`id`, `product`, `price`) VALUES
+(1, 'wejście jednorazowe', '5 złoty'),
+(2, 'karnet miesięczny', '100 złoty'),
+(3, 'karnet 3-miesięczny', '200 złoty'),
+(4, 'karnet roczny', '700 złoty');
 
 -- --------------------------------------------------------
 
@@ -105,13 +138,13 @@ INSERT INTO `posty` (`id`, `nagluwek`, `tresc`) VALUES
 CREATE TABLE `schedue` (
   `id` int(11) NOT NULL,
   `time` text NOT NULL,
-  `monday` text NOT NULL,
-  `tuesday` text NOT NULL,
-  `wednesday` text NOT NULL,
-  `thursday` text NOT NULL,
-  `friday` text NOT NULL,
-  `saturday` text NOT NULL,
-  `sunday` text NOT NULL
+  `monday` int(11) NOT NULL,
+  `tuesday` int(11) NOT NULL,
+  `wednesday` int(11) NOT NULL,
+  `thursday` int(11) NOT NULL,
+  `friday` int(11) NOT NULL,
+  `saturday` int(11) NOT NULL,
+  `sunday` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -119,42 +152,54 @@ CREATE TABLE `schedue` (
 --
 
 INSERT INTO `schedue` (`id`, `time`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`) VALUES
-(1, '15:00', '', '', '', '', '', '', 'ola'),
-(2, '16:00', '', '', '', '', 'klaudia', '', ''),
-(3, '17:00', 'julka', '', '', '', '', '', ''),
-(4, '18:00', '', 'antonina', '', '', '', 'paulina', ''),
-(5, '19:00', 'alicja', '', '', '', '', '', ''),
-(6, '20:00', '', '', 'ilona', '', '', '', '');
+(9, '15:00', 1, 1, 1, 1, 1, 1, 1),
+(10, '16:00', 7, 1, 13, 1, 12, 1, 1),
+(11, '17:00', 1, 1, 1, 1, 1, 1, 2),
+(12, '18:00', 1, 1, 1, 16, 1, 1, 1),
+(13, '19:00', 1, 1, 1, 1, 1, 6, 1),
+(14, '20:00', 1, 14, 1, 1, 13, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `users`
+-- Struktura tabeli dla tabeli `trainers`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `trainers` (
   `id` int(11) NOT NULL,
-  `login` text NOT NULL,
-  `password` text NOT NULL
+  `name` text NOT NULL,
+  `surname` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Zrzut danych tabeli `users`
+-- Zrzut danych tabeli `trainers`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`) VALUES
-(1, 'piotrek', '2b7c6d7b23062da26c083e79033ca6dede6189fc'),
-(2, 'piotrekPierdolonyBazan', '2b7c6d7b23062da26c083e79033ca6dede6189fc');
+INSERT INTO `trainers` (`id`, `name`, `surname`) VALUES
+(1, '', ''),
+(2, 'Antonina', 'Winkler'),
+(3, 'Adam', 'Patecki'),
+(4, 'Ania', 'Patataj'),
+(5, 'Aleksandra', 'AleAleAleŁadna'),
+(6, 'Piotr', 'Bazan');
 
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
--- Indeksy dla tabeli `cennik`
+-- Indeksy dla tabeli `admins`
 --
-ALTER TABLE `cennik`
+ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `trainerId` (`trainerId`),
+  ADD KEY `id` (`id`);
 
 --
 -- Indeksy dla tabeli `posts`
@@ -163,21 +208,29 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `posty`
+-- Indeksy dla tabeli `pricelist`
 --
-ALTER TABLE `posty`
+ALTER TABLE `pricelist`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `schedue`
 --
 ALTER TABLE `schedue`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `monday` (`monday`,`tuesday`,`wednesday`,`thursday`,`friday`,`saturday`),
+  ADD KEY `sunday` (`sunday`),
+  ADD KEY `sunday_2` (`sunday`),
+  ADD KEY `tuesday` (`tuesday`),
+  ADD KEY `wednesday` (`wednesday`),
+  ADD KEY `thursday` (`thursday`),
+  ADD KEY `friday` (`friday`),
+  ADD KEY `saturday` (`saturday`);
 
 --
--- Indeksy dla tabeli `users`
+-- Indeksy dla tabeli `trainers`
 --
-ALTER TABLE `users`
+ALTER TABLE `trainers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -185,34 +238,62 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT dla tabeli `cennik`
+-- AUTO_INCREMENT dla tabeli `admins`
 --
-ALTER TABLE `cennik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT dla tabeli `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT dla tabeli `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT dla tabeli `posty`
+-- AUTO_INCREMENT dla tabeli `pricelist`
 --
-ALTER TABLE `posty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+ALTER TABLE `pricelist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT dla tabeli `schedue`
 --
 ALTER TABLE `schedue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT dla tabeli `trainers`
+--
+ALTER TABLE `trainers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT dla tabeli `users`
+-- Ograniczenia dla zrzutów tabel
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Ograniczenia dla tabeli `classes`
+--
+ALTER TABLE `classes`
+  ADD CONSTRAINT `classes_ibfk_1` FOREIGN KEY (`trainerId`) REFERENCES `trainers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `schedue`
+--
+ALTER TABLE `schedue`
+  ADD CONSTRAINT `schedue_ibfk_1` FOREIGN KEY (`monday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_2` FOREIGN KEY (`tuesday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_3` FOREIGN KEY (`wednesday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_4` FOREIGN KEY (`thursday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_5` FOREIGN KEY (`friday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_6` FOREIGN KEY (`saturday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_7` FOREIGN KEY (`sunday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

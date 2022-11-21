@@ -37,7 +37,7 @@ if(isset($_SESSION['klucz1'])){
                     $dbname = "strona";
                 
                     $conn = mysqli_connect($servername, $username, $dbpassword, $dbname);
-                    $sql = "SELECT login, password FROM users WHERE login = '$login' AND password= '$shaPassword'";
+                    $sql = "SELECT login, password FROM admins WHERE login = '$login' AND password= '$shaPassword'";
                     $result = mysqli_query($conn, $sql);
                 
                     if (mysqli_num_rows($result) > 0) {

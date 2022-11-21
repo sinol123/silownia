@@ -30,7 +30,7 @@ if(isset($_POST['postSubmit'])){
 #priceListUpdate
 if(isset($_POST['priceListSubmit'])){
     for ($i = 1; $i < 5; $i++) {
-        $priceListUpdateQuery = "UPDATE cennik SET product = '" . $_POST['product' . $i] . "', price = '" . $_POST['price' . $i] . "' WHERE `cennik`.`id` =" . $i;
+        $priceListUpdateQuery = "UPDATE priceList SET product = '" . $_POST['product' . $i] . "', price = '" . $_POST['price' . $i] . "' WHERE `cennik`.`id` =" . $i;
         mysqli_query($GLOBALS['conn'], $priceListUpdateQuery);
     }
     echo "<script>alert('cennik zaktualizowany :))')</script>";
@@ -39,7 +39,7 @@ if(isset($_POST['priceListSubmit'])){
 #schedueUpdate
 if(isset($_POST['schedueUpdate'])){
     for ($i = 1; $i < 7; $i++) {
-        $schedueUpdateQuery = "UPDATE schedue SET time = '" . $_POST['time' . $i] . "', monday = '" . $_POST['monday' . $i] . "', tuesday = '" . $_POST['tuesday' . $i] . "', wednesday = '" . $_POST['wednesday' . $i] . "', thursday = '" . $_POST['thursday' . $i] . "', friday = '" . $_POST['friday' . $i] . "', saturday = '" . $_POST['saturday' . $i] . "', sunday = '" . $_POST['sunday' . $i] . "' WHERE id =" . $i;
+        $schedueUpdateQuery = "UPDATE schedue SET time = '" . $_POST['time' . $i] . "', monday = '" . $_POST['monday' . $i] . "', tuesday = '" . $_POST['tuesday' . $i] . "', wednesday = '" . $_POST['wednesday' . $i] . "', thursday = '" . $_POST['thursday' . $i] . "', friday = '" . $_POST['friday' . $i] . "', saturday = '" . $_POST['saturday' . $i] . "', sunday = '" . $_POST['sunday' . $i] . "' WHERE id =" . $i+8;
         mysqli_query($GLOBALS['conn'], $schedueUpdateQuery);
      }
      echo "<script>alert('terminarz zaktualizowany :))')</script>";
@@ -108,7 +108,7 @@ function displayPostList(){
 
 #displayPriceList
 function displayPriceList(){
-    $sql2 = "SELECT * FROM cennik";
+    $sql2 = "SELECT * FROM priceList";
     $result2 = mysqli_query($GLOBALS['conn'], $sql2);
     if (mysqli_num_rows($result2) > 0) {
         $i = 1;
