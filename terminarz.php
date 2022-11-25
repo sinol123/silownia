@@ -13,16 +13,16 @@
         if (mysqli_num_rows($GLOBALS['schedueSelectQueryResult']) > 0) {
             $i = 1;
             while($row = mysqli_fetch_assoc($GLOBALS['schedueSelectQueryResult']) ) {
-                   echo "<tr>
-                            <td>" . $row['time'] . "</td>
-                            <td onclick=alert('monday". $i .", 'asd','asda,')>" . $row['monday'] . "</td>
-                            <td onclick=hehe('tuesday". $i ."')>" . $row['tuesday'] . "</td>
-                            <td onclick=hehe('wednesday". $i ."')>" . $row['wednesday'] . "</td>
-                            <td onclick=hehe('thursday". $i ."')>" . $row['thursday'] . "</td>
-                            <td onclick=hehe('friday". $i ."')>" . $row['friday'] . "</td>
-                            <td onclick=hehe('saturday". $i ."')>" . $row['saturday'] . "</td>
-                            <td onclick=hehe('sunday". $i ."')>" . $row['sunday'] . "</td>
-                        </tr>";
+                   echo '<tr>
+                            <td>' . $row['time'] . '</td>
+                            <td onclick="alerte(`' . $row['monday'] . '`, `hehe`, `asda`, `asdas`)">' . $row['monday'] . '</td>
+                            <td onclick="alerte(`tuesday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['thursday'] . '</td>
+                            <td onclick="alerte(`wednesday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['wednesday'] . '</td>
+                            <td onclick="alerte(`thursday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['thursday'] . '</td>
+                            <td onclick="alerte(`friday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['friday'] . '</td>
+                            <td onclick="alerte(`saturday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['saturday'] . '</td>
+                            <td onclick="alerte(`sunday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['sunday'] . '</td>
+                        </tr>';
                     }
 
             }
@@ -74,8 +74,8 @@
           </div>
     </div>
     <script>
-        function alert(a, b, c ,d){
-        alert(a+ "\n" + b +"\n"+c+ "\n" + d )
+        function alerte(a, b, c ,d){
+            alert(a+ "\n" + b +"\n"+c+ "\n" + d )
         }
     </script>
 </body>
