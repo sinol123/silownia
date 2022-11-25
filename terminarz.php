@@ -8,6 +8,25 @@
     $schedueSelectQuery = "SELECT * FROM schedue";
     $schedueSelectQueryResult = mysqli_query($conn, $schedueSelectQuery);
     mysqli_close($conn);
+
+    function showSchedue(){
+        if (mysqli_num_rows($GLOBALS['schedueSelectQueryResult']) > 0) {
+            $i = 1;
+            while($row = mysqli_fetch_assoc($GLOBALS['schedueSelectQueryResult']) ) {
+                   echo "<tr>
+                            <td>" . $row['time'] . "</td>
+                            <td onclick=alert('monday". $i .", 'asd','asda,')>" . $row['monday'] . "</td>
+                            <td onclick=hehe('tuesday". $i ."')>" . $row['tuesday'] . "</td>
+                            <td onclick=hehe('wednesday". $i ."')>" . $row['wednesday'] . "</td>
+                            <td onclick=hehe('thursday". $i ."')>" . $row['thursday'] . "</td>
+                            <td onclick=hehe('friday". $i ."')>" . $row['friday'] . "</td>
+                            <td onclick=hehe('saturday". $i ."')>" . $row['saturday'] . "</td>
+                            <td onclick=hehe('sunday". $i ."')>" . $row['sunday'] . "</td>
+                        </tr>";
+                    }
+
+            }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -43,27 +62,21 @@
                 <tr>
                     <td>Godzina:</td><td>Poniedziałek:</td><td>Wtorek:</td><td>Środa:</td><td>Czwartek:</td><td>Piątek:</td><td>Sobota:</td><td>Niedziela:</td>
                 </tr>
-            <?php 
-                if (mysqli_num_rows($schedueSelectQueryResult) > 0) {
-                    while($row = mysqli_fetch_assoc($schedueSelectQueryResult) ) {
-                           echo "<tr>
-                                    <td>" . $row['time'] . "</td>
-                                    <td>" . $row['monday'] . "</td>
-                                    <td>" . $row['tuesday'] . "</td>
-                                    <td>" . $row['wednesday'] . "</td>
-                                    <td>" . $row['thursday'] . "</td>
-                                    <td>" . $row['friday'] . "</td>
-                                    <td>" . $row['saturday'] . "</td>
-                                    <td>" . $row['sunday'] . "</td>
-                                </tr>";
-                            }
-                    }
-                ?>
+                <form id="form" action="terminarz.php" method="post">
+                    <?php
+                        showSchedue();
+                    ?>
+                </form>
             </table>
         </div>
         <div class="footer">
             Lorem ipsum dolor sit amet.
           </div>
     </div>
+    <script>
+        function alert(a, b, c ,d){
+        alert(a+ "\n" + b +"\n"+c+ "\n" + d )
+        }
+    </script>
 </body>
 </html>

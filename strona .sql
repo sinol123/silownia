@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 21 Lis 2022, 20:27
+-- Czas generowania: 23 Lis 2022, 12:26
 -- Wersja serwera: 10.4.21-MariaDB
--- Wersja PHP: 8.0.12
+-- Wersja PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,27 +52,25 @@ INSERT INTO `admins` (`id`, `login`, `password`, `name`, `surname`) VALUES
 --
 
 CREATE TABLE `classes` (
-  `id` int(11) NOT NULL,
-  `name` text NOT NULL,
+  `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
-  `trainerId` int(11) NOT NULL,
-  `duration` text NOT NULL
+  `trainerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `classes`
 --
 
-INSERT INTO `classes` (`id`, `name`, `description`, `trainerId`, `duration`) VALUES
-(1, 'brak', 'brak zajec', 1, '5 minut'),
-(2, 'pompki', 'góra dół na dywanie', 4, '10 minut'),
-(6, 'bieganie', 'szybko', 3, '2 godziny'),
-(7, 'deska', 'z kulą do kręgli', 4, 'ile wytrzymasz'),
-(12, 'przysiad', 'z kolegami', 2, 'raz'),
-(13, 'pływanie', 'w basenie :00', 2, 'do upadłego'),
-(14, 'żucanie', 'do przodu jak najdalej', 3, '2 rzuty'),
-(15, 'picie', 'piwa na czas', 4, 'jak najszybciej'),
-(16, 'stanie', 'w miejscu jak słup', 6, 'cały dzień');
+INSERT INTO `classes` (`name`, `description`, `trainerId`) VALUES
+('bieganie', 'szybko', 3),
+('brak', 'brak', 1),
+('deska', 'z kulą do kręgli', 4),
+('picie', 'piwa na czas', 4),
+('pompki', 'góra dół na dywanie', 4),
+('przysiad', 'z kolegami', 2),
+('pływanie', 'w basenie :00', 2),
+('stanie', 'w miejscu jak słup', 6),
+('żucanie', 'do przodu jak najdalej', 3);
 
 -- --------------------------------------------------------
 
@@ -138,13 +136,13 @@ INSERT INTO `pricelist` (`id`, `product`, `price`) VALUES
 CREATE TABLE `schedue` (
   `id` int(11) NOT NULL,
   `time` text NOT NULL,
-  `monday` int(11) NOT NULL,
-  `tuesday` int(11) NOT NULL,
-  `wednesday` int(11) NOT NULL,
-  `thursday` int(11) NOT NULL,
-  `friday` int(11) NOT NULL,
-  `saturday` int(11) NOT NULL,
-  `sunday` int(11) NOT NULL
+  `monday` varchar(15) NOT NULL,
+  `tuesday` varchar(15) NOT NULL,
+  `wednesday` varchar(15) NOT NULL,
+  `thursday` varchar(15) NOT NULL,
+  `friday` varchar(15) NOT NULL,
+  `saturday` varchar(15) NOT NULL,
+  `sunday` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -152,12 +150,7 @@ CREATE TABLE `schedue` (
 --
 
 INSERT INTO `schedue` (`id`, `time`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`) VALUES
-(9, '15:00', 1, 1, 1, 1, 1, 1, 1),
-(10, '16:00', 7, 1, 13, 1, 12, 1, 1),
-(11, '17:00', 1, 1, 1, 1, 1, 1, 2),
-(12, '18:00', 1, 1, 1, 16, 1, 1, 1),
-(13, '19:00', 1, 1, 1, 1, 1, 6, 1),
-(14, '20:00', 1, 14, 1, 1, 13, 1, 1);
+(1, '15:00', 'brak', 'brak', 'brak', 'brak', 'brak', 'brak', 'brak');
 
 -- --------------------------------------------------------
 
@@ -197,9 +190,8 @@ ALTER TABLE `admins`
 -- Indeksy dla tabeli `classes`
 --
 ALTER TABLE `classes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `trainerId` (`trainerId`),
-  ADD KEY `id` (`id`);
+  ADD PRIMARY KEY (`name`),
+  ADD KEY `trainerId` (`trainerId`);
 
 --
 -- Indeksy dla tabeli `posts`
@@ -218,14 +210,13 @@ ALTER TABLE `pricelist`
 --
 ALTER TABLE `schedue`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `monday` (`monday`,`tuesday`,`wednesday`,`thursday`,`friday`,`saturday`),
-  ADD KEY `sunday` (`sunday`),
-  ADD KEY `sunday_2` (`sunday`),
-  ADD KEY `tuesday` (`tuesday`),
+  ADD KEY `schedue_ibfk_1` (`monday`),
+  ADD KEY `schedue_ibfk_2` (`tuesday`),
   ADD KEY `wednesday` (`wednesday`),
   ADD KEY `thursday` (`thursday`),
   ADD KEY `friday` (`friday`),
-  ADD KEY `saturday` (`saturday`);
+  ADD KEY `schedue_ibfk_6` (`saturday`),
+  ADD KEY `sunday` (`sunday`);
 
 --
 -- Indeksy dla tabeli `trainers`
@@ -244,12 +235,6 @@ ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `classes`
---
-ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
 -- AUTO_INCREMENT dla tabeli `posts`
 --
 ALTER TABLE `posts`
@@ -265,7 +250,7 @@ ALTER TABLE `pricelist`
 -- AUTO_INCREMENT dla tabeli `schedue`
 --
 ALTER TABLE `schedue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `trainers`
@@ -287,13 +272,13 @@ ALTER TABLE `classes`
 -- Ograniczenia dla tabeli `schedue`
 --
 ALTER TABLE `schedue`
-  ADD CONSTRAINT `schedue_ibfk_1` FOREIGN KEY (`monday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedue_ibfk_2` FOREIGN KEY (`tuesday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedue_ibfk_3` FOREIGN KEY (`wednesday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedue_ibfk_4` FOREIGN KEY (`thursday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedue_ibfk_5` FOREIGN KEY (`friday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedue_ibfk_6` FOREIGN KEY (`saturday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedue_ibfk_7` FOREIGN KEY (`sunday`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `schedue_ibfk_1` FOREIGN KEY (`monday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_2` FOREIGN KEY (`tuesday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_3` FOREIGN KEY (`wednesday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_4` FOREIGN KEY (`thursday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_5` FOREIGN KEY (`friday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_6` FOREIGN KEY (`saturday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedue_ibfk_7` FOREIGN KEY (`sunday`) REFERENCES `classes` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
