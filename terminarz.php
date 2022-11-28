@@ -7,26 +7,40 @@
 
     $schedueSelectQuery = "SELECT * FROM schedue";
     $schedueSelectQueryResult = mysqli_query($conn, $schedueSelectQuery);
-    mysqli_close($conn);
+
 
     function showSchedue(){
-        if (mysqli_num_rows($GLOBALS['schedueSelectQueryResult']) > 0) {
-            $i = 1;
-            while($row = mysqli_fetch_assoc($GLOBALS['schedueSelectQueryResult']) ) {
-                   echo '<tr>
-                            <td>' . $row['time'] . '</td>
-                            <td onclick="alerte(`' . $row['monday'] . '`, `hehe`, `asda`, `asdas`)">' . $row['monday'] . '</td>
-                            <td onclick="alerte(`tuesday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['thursday'] . '</td>
-                            <td onclick="alerte(`wednesday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['wednesday'] . '</td>
-                            <td onclick="alerte(`thursday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['thursday'] . '</td>
-                            <td onclick="alerte(`friday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['friday'] . '</td>
-                            <td onclick="alerte(`saturday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['saturday'] . '</td>
-                            <td onclick="alerte(`sunday' . $i . '`, `asd`, `asda`, `asdas`)">' . $row['sunday'] . '</td>
-                        </tr>';
-                    }
 
+        if (mysqli_num_rows($GLOBALS['schedueSelectQueryResult']) > 0) {
+            while($row = mysqli_fetch_assoc($GLOBALS['schedueSelectQueryResult']) ) {
+                $rowArray =  array($row['time'], $row['monday'], $row['tuesday'], $row['wednesday'], $row['thursday'], $row['friday'], $row['saturday'],  $row['sunday']);
+                echo '<tr>';
+                echo '<td>' . $rowArray[0] . '</td>';
+
+                    
+                for ($i = 1; $i < 8; $i++) {
+                
+                    $halo = "SELECT classes.description, classes.duration, trainers.name, trainers.surname FROM classes INNER JOIN trainers ON classes.trainerId = trainers.id WHERE classes.name = '" . $rowArray[$i] . "'" ;
+
+                    $haloQueryResult = mysqli_query($GLOBALS['conn'], $halo);
+
+                    if (mysqli_num_rows($haloQueryResult) > 0) {
+                        while($row = mysqli_fetch_assoc($haloQueryResult) ) {
+                            echo
+                                    '<td onclick="alerte(`' . $rowArray[0] . '`, `' . $rowArray[$i] . '`, `' . $row['description'] . '`, `' . $row['name'] . ' ' . $row['surname'] . '`, `' . $row['duration'] . '`)">' . $rowArray[$i] . '</td>';
+
+                        }
+                    }
+                }
+                  
+                echo '</tr>';
             }
+
+        }
+
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,9 +88,12 @@
           </div>
     </div>
     <script>
-        function alerte(a, b, c ,d){
-            alert(a+ "\n" + b +"\n"+c+ "\n" + d )
+        function alerte(a, b, c ,d, e){
+            if(c != `brak`){
+                alert("Godzina: " + a + "\nNazwa: " + b + "\nOpis: " + c + "\nTrener: " + d + "\nCzas trwania: " + e);
+            }
         }
+
     </script>
 </body>
 </html>

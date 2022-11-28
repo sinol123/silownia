@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Lis 2022, 12:26
+-- Czas generowania: 28 Lis 2022, 14:12
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.10
 
@@ -54,23 +54,24 @@ INSERT INTO `admins` (`id`, `login`, `password`, `name`, `surname`) VALUES
 CREATE TABLE `classes` (
   `name` varchar(15) NOT NULL,
   `description` text NOT NULL,
-  `trainerId` int(11) NOT NULL
+  `trainerId` int(11) NOT NULL,
+  `duration` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `classes`
 --
 
-INSERT INTO `classes` (`name`, `description`, `trainerId`) VALUES
-('bieganie', 'szybko', 3),
-('brak', 'brak', 1),
-('deska', 'z kulą do kręgli', 4),
-('picie', 'piwa na czas', 4),
-('pompki', 'góra dół na dywanie', 4),
-('przysiad', 'z kolegami', 2),
-('pływanie', 'w basenie :00', 2),
-('stanie', 'w miejscu jak słup', 6),
-('żucanie', 'do przodu jak najdalej', 3);
+INSERT INTO `classes` (`name`, `description`, `trainerId`, `duration`) VALUES
+('', 'brak', 1, 'brak'),
+('bieganie', 'szybko', 3, 'chwilę'),
+('deska', 'z kulą do kręgli', 4, '2 godziny'),
+('picie', 'piwa na czas', 4, 'jak najszyciej'),
+('pompki', 'góra dół na dywanie', 4, 'do upadłego'),
+('przysiad', 'z kolegami', 2, 'jeden przysiad'),
+('pływanie', 'w basenie :00', 2, '2 minuty'),
+('stanie', 'w miejscu jak słup', 6, 'cały dzień'),
+('żucanie', 'do przodu jak najdalej', 3, '3 rzuty');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,11 @@ CREATE TABLE `schedue` (
 --
 
 INSERT INTO `schedue` (`id`, `time`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`) VALUES
-(1, '15:00', 'brak', 'brak', 'brak', 'brak', 'brak', 'brak', 'brak');
+(1, '15:00', 'picie', '', '', '', '', '', ''),
+(2, '16:00', '', '', 'żucanie', '', '', 'pompki', 'pływanie'),
+(3, '17:00', '', 'przysiad', '', '', '', '', ''),
+(4, '18:00', 'pływanie', '', 'bieganie', '', 'stanie', '', ''),
+(5, '19:00', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -250,7 +255,7 @@ ALTER TABLE `pricelist`
 -- AUTO_INCREMENT dla tabeli `schedue`
 --
 ALTER TABLE `schedue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `trainers`
