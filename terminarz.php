@@ -87,13 +87,45 @@
             Lorem ipsum dolor sit amet.
           </div>
     </div>
+
+</div>
+<h1>Popup/Modal Animation with out JavaScript</h1>
+<div class="box">
+  <a class="button" href="#popup1">Let me Pop up</a>
+</div>
+
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Zajęcia :00</h2>
+    <a class="close" href="#">×</a>
+    <div class="content">
+      <p id="p1"></p>
+      <p id="p2"></p>
+      <p id="p3"></p>
+      <p id="p4"></p>
+      <p id="p5"></p>
+    </div>
+  </div>
+</div>
     <script>
         function alerte(a, b, c ,d, e){
             if(c != `brak`){
-                alert("Godzina: " + a + "\nNazwa: " + b + "\nOpis: " + c + "\nTrener: " + d + "\nCzas trwania: " + e);
+                let p1 = document.getElementById("p1");
+                let p2 = document.getElementById("p2");
+                let p3 = document.getElementById("p3");
+                let p4 = document.getElementById("p4");
+                let p5 = document.getElementById("p5");
+
+                p1.innerText = "Godzina: " + a;
+                p2.innerText = "Nazwa: " + b;
+                p3.innerText = "Opis: " + c;
+                p4.innerText = "Trener: " + d;
+                p5.innerText = "Czas trwania: " + e;
+
+                location.href="#popup1"
             }
         }
-
+        
     </script>
 </body>
 </html>

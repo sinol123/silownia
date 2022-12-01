@@ -6,7 +6,7 @@
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-    $sql = "SELECT * FROM cennik";
+    $sql = "SELECT * FROM pricelist";
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
 ?>
