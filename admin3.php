@@ -22,7 +22,7 @@ if(isset($_SESSION['klucz1'])){
             <h2>Zaloguj się</h2>
             <input placeholder="login" type="text" name="login" id="">
             <input placeholder="hasło" type="password" name="password">
-            <input type="submit" value="Zaloguj">
+            <input id="submitInput" type="submit" value="Zaloguj">
             <p><?php
                 
                 if(isset($_POST['login']) && isset($_POST['password'])){

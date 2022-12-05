@@ -131,12 +131,47 @@ table td:hover{
     margin-right: 50px;
 }
 
+.map{
+  grid-column-start:1;
+  grid-column-end:6;
+  grid-row-start: 9;
+  grid-row-end: 18;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#contactAndHours{
+  grid-column-start:1;
+  grid-column-end:6;
+  grid-row-start: 6;
+  grid-row-end: 9;
+  color: rgb(255, 255, 255);
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#contactAndHours h2{
+  margin: 20px 0px 10px 0;
+}
+
+.contact{
+  float: left;
+  width: 250px;
+}
+
+.hours{
+  float: right;
+  width: 250px;
+}
+
+
+
 ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(255, 255, 0);
+    background-color: rgb(255, 212, 42);
     height: 50px;
 }
 
@@ -163,7 +198,7 @@ li a{
   
   /* Change the link color to #111 (black) on hover */
 li a:hover{
-    background-color: rgb(214, 214, 0);
+background-color: rgb(255, 244, 42);
 }
 
 img{

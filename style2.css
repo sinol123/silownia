@@ -13,17 +13,19 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(rgb(242, 197, 196),rgb(157, 139, 239));
+    background: black;
 }
 
 h2{
     margin: 20px;
     font-size: 40px;
+    color: rgb(255, 212, 42);
 }
 
 form{
     width: 500px;
-    background-color: white;
+    color: white;
+    background-color: rgb(40, 40, 40);
     padding: 15px;
     border-radius: 5px;
     box-shadow: 5px 10px rgba(0, 0, 0, 0.2);
@@ -35,6 +37,16 @@ input{
     padding: 10px;
     margin: 10px;
     font-size: 20px;
+}
+
+#submitInput{
+    color: black;
+    background-color: rgb(255, 212, 42);
+    border-color: rgba(0, 0, 0, 0);
+}
+
+#submitInput:hover{
+    background-color: rgb(255, 244, 42);
 }
 
 p{  
