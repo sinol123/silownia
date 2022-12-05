@@ -43,6 +43,26 @@ h3{
   margin-top: 0;
 }
 
+div.schedueForm {
+  width: 285px;
+  text-align: right;
+  display: inline-block;
+  height: 220px;
+}
+
+div.schedueForm h2{
+  text-align: center;
+}
+
+div.schedueForm select{
+  width: 177px;
+}
+
+
+#classesSubmit{
+  text-align: left;
+}
+
 .container{
   max-width: 1300px;
   display: grid;
@@ -115,13 +135,43 @@ h3{
   grid-row-end: 10;
 }
 
-div#leftBlock{
+#kontakt{
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 6;
+  grid-row-end: 19;
+}
+
+.hours{
+  height: 95px;
+  margin-top: 20px;
+  color: aliceblue;
+  margin-left: 50px;
+  display: inline-block;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.map{
+  height: 475px;
+}
+
+.adres{
+  height: 95px;
+  margin-top: 20px;
+  color: aliceblue;
+  margin-right: 50px;
+  display: inline-block;
+  float: right;
+}
+
+#leftBlock{
   float: left;
   width: 45%;
   margin: 2.5%;
 }
 
-div#rightBlock{
+#rightBlock{
   float: left;
   width: 45%;
   margin: 2.5%;

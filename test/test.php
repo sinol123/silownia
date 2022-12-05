@@ -15,6 +15,19 @@ require 'content1.php';
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
         <link type="text/javascript" href="hehehe.js">
+        <style>
+            #leftBlock{
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+
+#rightBlock{
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+        </style>
     </head>
     <body>
         <div class="container">
@@ -132,6 +145,30 @@ require 'content1.php';
                     <br>
                     <input class="submit" type="submit" value="hehehe" name="schedueUpdate">
                 </form>
+                <br>
+                <div class="schedueForm" id="classForm">
+                    <form action="test.php" method="post">
+                        <h2>Utwórz znowe zajęcia</h2>
+                        <p>Nazwa: <input type="text" name="className"></p>
+                        <p>Opis: <input type="text" name="description"></p>
+                        <p>Czas twania: <input type="text" name="duration"></p>
+                        <p>Trener <select name="trainer" id="">
+                            <?php
+                                displayTrainers();
+                            ?>
+                        </select></p>
+                        <br>
+                        <p class="classesSubmit"><input type="submit" class="submit" name="classesSubmit"  value="hehehe"></p>
+                    </form>
+                </div>
+                <div class="schedueForm" id="trainerForm">
+                    <form action="test.php" method="post">
+                        <h2>Dodaj trenera</h2>
+                        <p>imie: <input name="trainerName" type="text"></p>
+                        <p>Nazwisko: <input name="surname" type="text"></p>
+                        <p class="classesSubmit"><input name="trainerSubmit" value="hehehe" type="submit" class="submit"></p>
+                    </form>
+                </div>
             </div>
             
             <!--kontakt-->
@@ -158,3 +195,67 @@ require 'content1.php';
     </body>
     <script type="text/javascript" src="hehehe.js"></script>
 </html>
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+<script>
+    function showSelect(a){
+
+        let numberOfRows = 
+        <?php
+            $sql = "SELECT COUNT(name) FROM classes;";
+            $result = mysqli_query($GLOBALS['conn'], $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result) ) {
+                    echo $row['COUNT(name)'];
+                }
+            }
+        ?>;
+    
+        let tableCell =  document.getElementById(a);
+
+        if(tableCell.firstChild === null || tableCell.firstChild.nodeType === 3 ){
+            let select = document.createElement("select");
+            select.id = "select" + a;
+            select.name = "select" + a;
+            select.value = tableCell.innerText;
+            for(i = 0; i < numberOfRows; i++){
+                let selectOption = document.createElement("option");
+                selectOption.value = hehe[i];
+                selectOption.innerText = hehe[i];
+                select.appendChild(selectOption);
+            }
+            tableCell.innerText = null;
+            tableCell.appendChild(select);
+            document.getElementById(select.id).addEventListener('change', (event) => {
+            onchange(a);
+          }, true);
+        }
+    
+    }
+    
+    function onchange(a){
+        console.log(a);
+        let tableCell =  document.getElementById(a);
+        let input = document.getElementById(a + "Input");
+        let select = tableCell.firstChild;
+        tableCell.innerText = select.value;
+        input.value = select.value;
+        select.remove();
+    }
+
+    let hehe = 
+    <?php        
+        $sql = "SELECT name FROM classes";
+        $result = mysqli_query($GLOBALS['conn'], $sql);
+        if (mysqli_num_rows($result) > 0) {
+            echo "[";
+            while($row = mysqli_fetch_assoc($result) ) {
+                echo "'" . $row['name'] . "',";
+            }
+            echo "]";
+        }
+    ?>
+</script>

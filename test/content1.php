@@ -20,26 +20,41 @@ if(isset($_POST['logout'])){
     exit('zostałeś wylogowany');
 }
 
+#createClass
+if(isset($_POST['classesSubmit'])){
+    $classInsertQuery = "INSERT INTO classes (name, description, trainerId, duration) VALUES ('" . $_POST['className'] . "', '" . $_POST['description'] . "', '" . $_POST['trainer'] . "', '" . $_POST['duration'] . "');";
+    mysqli_query($conn, $classInsertQuery);
+    echo "<script>alert('Zajęcia utworzone :))')</script>";
+}
+
+#createTrainer
+if(isset($_POST['trainerSubmit'])){
+    $trainerInsertQuery = "INSERT INTO trainers (id, name, surname) VALUES (NULL, '" . $_POST['trainerName'] . "', '" . $_POST['surname'] . "')";
+    mysqli_query($conn, $trainerInsertQuery);
+    echo "<script>alert('trener Dodany :))')</script>";
+}
+
 #pushPost
 if(isset($_POST['postSubmit'])){
+    unset($_POST['postSubmit']);
     $postInsertQuery = "INSERT INTO posts(id, headline, paragrapf, deleted) VALUES (NULL,'" . $_POST['headline'] . "','" . $_POST['paragrapf'] . "', 0)";
-    mysqli_query($GLOBALS['conn'], $postInsertQuery);
+    mysqli_query($conn, $postInsertQuery);
     echo "<script>alert('post wstawiony :))')</script>";
 }
 
 #priceListUpdate
 if(isset($_POST['priceListSubmit'])){
     for ($i = 1; $i < 5; $i++) {
-        $priceListUpdateQuery = "UPDATE priceList SET product = '" . $_POST['product' . $i] . "', price = '" . $_POST['price' . $i] . "' WHERE `cennik`.`id` =" . $i;
-        mysqli_query($GLOBALS['conn'], $priceListUpdateQuery);
+        $priceListUpdateQuery = "UPDATE pricelist SET product = '" . $_POST['product' . $i] . "', price = '" . $_POST['price' . $i] . "' WHERE pricelist.id =" . $i;
+        mysqli_query($conn, $priceListUpdateQuery);
     }
     echo "<script>alert('cennik zaktualizowany :))')</script>";
 }
 
 #schedueUpdate
 if(isset($_POST['schedueUpdate'])){
-    for ($i = 1; $i < 7; $i++) {
-        $schedueUpdateQuery = "UPDATE schedue SET time = '" . $_POST['time' . $i] . "', monday = '" . $_POST['monday' . $i] . "', tuesday = '" . $_POST['tuesday' . $i] . "', wednesday = '" . $_POST['wednesday' . $i] . "', thursday = '" . $_POST['thursday' . $i] . "', friday = '" . $_POST['friday' . $i] . "', saturday = '" . $_POST['saturday' . $i] . "', sunday = '" . $_POST['sunday' . $i] . "' WHERE id =" . $i+8;
+    for ($i = 1; $i < 6; $i++) {
+        $schedueUpdateQuery = "UPDATE schedue SET time = '" . $_POST['time' . $i] . "', monday = '" . $_POST['monday' . $i] . "', tuesday = '" . $_POST['tuesday' . $i] . "', wednesday = '" . $_POST['wednesday' . $i] . "', thursday = '" . $_POST['thursday' . $i] . "', friday = '" . $_POST['friday' . $i] . "', saturday = '" . $_POST['saturday' . $i] . "', sunday = '" . $_POST['sunday' . $i] . "' WHERE id =" . $i;
         mysqli_query($GLOBALS['conn'], $schedueUpdateQuery);
      }
      echo "<script>alert('terminarz zaktualizowany :))')</script>";
@@ -88,6 +103,20 @@ if(isset($_POST['hideSubmit'])){
     echo "<script>alert('posty ukryte :))')</script>";
 }
 
+#displayTrainers
+function displayTrainers(){
+
+    $trainersSelectQuery = "SELECT * FROM trainers";
+    $trainersSelectQueryResult = mysqli_query($GLOBALS['conn'], $trainersSelectQuery);
+
+    if(mysqli_num_rows($trainersSelectQueryResult) > 0){
+        $i = 1;
+        while($row = mysqli_fetch_assoc($trainersSelectQueryResult)){
+            echo "<option value='" . $row['id'] . "'>" . $row['name'] . " " . $row['surname'] . "</option>";
+        }
+    }
+}
+
 #displayPostList
 function displayPostList(){
     
@@ -133,13 +162,13 @@ function displaySchedue(){
         while($row = mysqli_fetch_assoc($schedueSelectQueryResult) ) {
             echo '<tr>
                     <td name="time' . $i . '" id="time' . $i . '" onclick="replaceNode(`time' . $i . '`)">'. $row['time']. '</td>
-                    <td name="monday' . $i . '" id="monday' . $i . '" onclick="replaceNode(`monday' . $i . '`)">'. $row['monday']. '</td>
-                    <td name="tuesday' . $i . '" id="tuesday' . $i . '" onclick="replaceNode(`tuesday' . $i . '`)">'. $row['tuesday']. '</td>
-                    <td name="wednesday' . $i . '" id="wednesday' . $i . '" onclick="replaceNode(`wednesday' . $i . '`)">'. $row['wednesday']. '</td>
-                    <td name="thursday' . $i . '" id="thursday' . $i . '" onclick="replaceNode(`thursday' . $i . '`)">'. $row['thursday']. '</td>
-                    <td name="friday' . $i . '" id="friday' . $i . '" onclick="replaceNode(`friday' . $i . '`)">'. $row['friday']. '</td>
-                    <td name="saturday' . $i . '" id="saturday' . $i . '" onclick="replaceNode(`saturday' . $i . '`)">'. $row['saturday']. '</td>
-                    <td name="sunday' . $i . '" id="sunday' . $i . '" onclick="replaceNode(`sunday' . $i . '`)">'. $row['sunday']. '</td>
+                    <td id="monday' . $i . '" onclick=showSelect("monday' . $i . '")>'. $row['monday']. '</td>
+                    <td id="tuesday' . $i . '" onclick=showSelect("tuesday' . $i . '")>'. $row['tuesday']. '</td>
+                    <td id="wednesday' . $i . '" onclick=showSelect("wednesday' . $i . '")>'. $row['wednesday']. '</td>
+                    <td id="thursday' . $i . '" onclick=showSelect("thursday' . $i . '")>'. $row['thursday']. '</td>
+                    <td id="friday' . $i . '" onclick=showSelect("friday' . $i . '")>'. $row['friday']. '</td>
+                    <td id="saturday' . $i . '" onclick=showSelect("saturday' . $i . '")>'. $row['saturday']. '</td>
+                    <td id="sunday' . $i . '" onclick=showSelect("sunday' . $i . '")>'. $row['sunday']. '</td>
                 </tr>';
             echo '<input type="hidden" value="'. $row['time']. '" id="time' . $i . 'Input" name="time' . $i . '">
                 <input type="hidden" value="'. $row['monday']. '" id="monday' . $i . 'Input" name="monday' . $i . '">
