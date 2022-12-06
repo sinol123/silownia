@@ -23,12 +23,6 @@ mysqli_close($conn);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="icon2.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
-    <style>
-        h1{
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -46,10 +40,11 @@ mysqli_close($conn);
             </ul>
         </div>
         <div class="sinol">
+            <h2>Aktualności</h2>
         <?php
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result) ) {
-                    echo "<h1>" . $row["headline"]."</h1> <p> " . $row["paragrapf"]. "</p><br>";
+                    echo "<h3>" . $row["headline"]."</h3> <p> " . $row["paragrapf"]. "</p><br>";
                 }
             }
         ?>

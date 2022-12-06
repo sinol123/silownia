@@ -28,7 +28,7 @@ form{
     background-color: rgb(40, 40, 40);
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px rgba(255, 212, 42, 1);
 }
 
 input{

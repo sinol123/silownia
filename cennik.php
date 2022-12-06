@@ -41,6 +41,7 @@
             </ul>
         </div>
         <div class="cennik">
+            <h2>Cennik</h2>
             <table style="width:100%">
             <tr>
                 <td>Karnet:</td><td>Cena:</td>

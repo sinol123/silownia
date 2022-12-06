@@ -72,6 +72,7 @@
             </ul>
         </div>
         <div class="terminarz">
+            <h2>Terminarz</h2>
             <table style="width:100%">
                 <tr>
                     <td>Godzina:</td><td>Poniedziałek:</td><td>Wtorek:</td><td>Środa:</td><td>Czwartek:</td><td>Piątek:</td><td>Sobota:</td><td>Niedziela:</td>
@@ -88,10 +89,6 @@
           </div>
     </div>
 
-</div>
-<h1>Popup/Modal Animation with out JavaScript</h1>
-<div class="box">
-  <a class="button" href="#popup1">Let me Pop up</a>
 </div>
 
 <div id="popup1" class="overlay">
