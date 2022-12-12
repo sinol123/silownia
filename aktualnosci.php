@@ -32,7 +32,7 @@ mysqli_close($conn);
         <div class="xd"></div>
         <div class="nav">
         <ul>
-                <li><a href="aktualnosci.php"><b>aktualności</b></a></li>
+                <li><a onclick="console.log('ss')"><b>aktualności</b></li>
                 <li><a href="cennik.php"><b>cennik</b></a></li>
                 <li><a href="galeria.html"><b>galeria</b></a></li>
                 <li><a href="terminarz.php" ><b>terminarz</b></a></li>

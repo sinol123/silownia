@@ -12,22 +12,49 @@
             height: 200px;
         }
 
+        #eloelo{
+            display: grid;
+            width: 1000px;
+            height: 500px;
+            grid-template-columns: repeat(1, 1fr);
+            margin-left: auto;
+            margin-right: auto;
+            grid-auto-rows: 50px;
+        }
+
         #div1{
-            visibility: hidden;
+            visibility: visible;
             background-color: blueviolet;
             opacity: 0;
             transition: opacity 1s;
+            grid-column-start:1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            width: 100%;
+            z-index: 0;
         }
 
         #div2{
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 1s;
             background-color: brown;
-            display: block;
+            grid-column-start:1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            width: 100%;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <div id="div1"></div>
-    <div id="div2"></div>
-    <button onclick="document.getElementById('div1').style.opacity = 1, document.getElementById('div1').style.visibility = 'visible'"></button>
+    <div id="eloelo">
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </div>
+    <button onclick="
+    document.getElementById('div1').style.opacity = 1, document.getElementById('div2').style.opacity = 0, document.getElementById('div1').style.zIndex = 1, document.getElementById('div2').style.zIndex = 0"></button>
 </body>
 </html>
