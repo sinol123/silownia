@@ -8,8 +8,12 @@
     $schedueSelectQuery = "SELECT * FROM schedue";
     $schedueSelectQueryResult = mysqli_query($conn, $schedueSelectQuery);
 
-    $sql = "SELECT id, headline, paragrapf FROM posts WHERE deleted = 0 ORDER BY id DESC LIMIT 4";
-    $result = mysqli_query($conn, $sql);
+    $newsSelectQuery = "SELECT id, headline, paragrapf FROM posts WHERE deleted = 0 ORDER BY id DESC LIMIT 4";
+    $newsSelectQueryResult = mysqli_query($conn, $newsSelectQuery);
+
+    $priceListSelectQuery = "SELECT * FROM pricelist";
+    $priceListSelectQueryResult = mysqli_query($conn, $priceListSelectQuery);
+
 
     function showSchedue(){
 
@@ -52,7 +56,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styletete.css">
-    <title>terminarz</title>
+    <title id="title">terminarz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="icon2.png" type="image/x-icon">
@@ -78,8 +82,8 @@
         <div id="sinol">
             <h2>Aktualności</h2>
         <?php
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result) ) {
+            if (mysqli_num_rows($newsSelectQueryResult) > 0) {
+                while($row = mysqli_fetch_assoc($newsSelectQueryResult) ) {
                     echo "<h3>" . $row["headline"]."</h3> <p> " . $row["paragrapf"]. "</p><br>";
                 }
             }
@@ -94,8 +98,8 @@
                 <td>Karnet:</td><td>Cena:</td>
             </tr>
                 <?php 
-                    if (mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result) ) {
+                    if (mysqli_num_rows($priceListSelectQueryResult) > 0) {
+                        while($row = mysqli_fetch_assoc($priceListSelectQueryResult) ) {
                             echo    "<tr>
                                         <td>". $row['product']. "</td>
                                         <td>".$row['price'].  "</td>
@@ -223,6 +227,7 @@
         var terminarz = document.getElementById("terminarz");
         var kontakt = document.getElementById("contactAndHours");
         var kontakt2 = document.getElementById("map");
+        var title = document.getElementById("title");
         
 
         function eloelo(){
@@ -248,26 +253,31 @@
                 case 1: 
                     aktualnosci.style.zIndex = 1;
                     aktualnosci.style.opacity = 1;
+                    title.innerHTML = "aktualności";
                     break
                 case 2: 
                     cennik.style.zIndex = 1;
                     cennik.style.opacity = 1;
+                    title.innerHTML = "cennik";
                     break
                 case 3: 
                     galeria.style.zIndex = 1;
                     galeria.style.opacity = 1;
                     galeria2.style.zIndex = 1;
                     galeria2.style.opacity = 1;
+                    title.innerHTML = "galeria";
                     break
                 case 4: 
                     terminarz.style.zIndex = 1;
                     terminarz.style.opacity = 1;
+                    title.innerHTML = "terminarz";
                     break
                 case 5: 
                     kontakt.style.zIndex = 1;
                     kontakt.style.opacity = 1;
                     kontakt2.style.zIndex = 1;
                     kontakt2.style.opacity = 1;
+                    title.innerHTML = "kontakt";
                     break
 
             }
