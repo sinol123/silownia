@@ -70,16 +70,16 @@
         <div class="xd"></div>
         <div class="nav">
             <ul>
-                <li><a onclick="change(1)"><b>aktualności</b></a></li>
-                <li><a onclick="change(2)"><b>cennik</b></a></li>
-                <li><a onclick="change(3)"><b>galeria</b></a></li>
-                <li><a onclick="change(4)"><b>terminarz</b></a></li>
-                <li><a onclick="change(5)"><b>kontakt</b></a></li>
+                <li><a onclick="disapear('aktualności'), change(0)"><b>aktualności</b></a></li>
+                <li><a onclick="disapear('cennik'), change(1)"><b>cennik</b></a></li>
+                <li><a onclick="disapear('galeria'), change(2), change(3)"><b>galeria</b></a></li>
+                <li><a onclick="disapear('terminarz'), change(4)"><b>terminarz</b></a></li>
+                <li><a onclick="disapear('kontakt'), change(5), change(6)"><b>kontakt</b></a></li>
             </ul>
         </div>
 
 
-        <div id="sinol">
+        <div class="div" id="sinol">
             <h2>Aktualności</h2>
         <?php
             if (mysqli_num_rows($newsSelectQueryResult) > 0) {
@@ -91,7 +91,7 @@
                 </div>
 
 
-        <div id="cennik">
+        <div class="div" id="cennik">
             <h2>Cennik</h2>
             <table style="width:100%">
             <tr>
@@ -112,10 +112,10 @@
         </div>
 
 
-        <div id="headline">
+        <div class="div" id="headline">
           <h2>Galeria</h2>
         </div>
-        <div id="carousel-wrapper">
+        <div class="div" id="carousel-wrapper">
           <span id="item-1"></span>
           <span id="item-2"></span>
           <span id="item-3"></span>
@@ -148,7 +148,7 @@
         </div>
 
 
-        <div id="terminarz">
+        <div class="div" id="terminarz">
             <h2>Terminarz</h2>
             <table style="width:100%">
                 <tr>
@@ -163,7 +163,7 @@
         </div>
 
 
-        <div id="contactAndHours">
+        <div class="div" id="contactAndHours">
             <div class="contact">
                 <h2>Kontakt:</h2>
                 <p>nr.telefonu: 518 518 476</p>
@@ -176,12 +176,12 @@
                 <p>Nd:  15:00 - 20:00</p>
             </div>
         </div>
-        <div id="map">
+        <div class="div" id="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d257611.57911911956!2d-157.3792604724713!3d2.056899439270722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a02a1b43964bd51%3A0xef0431f28d5a2026!2sSand%20Beach%20Restaurant!5e1!3m2!1spl!2spl!4v1641895432170!5m2!1spl!2spl"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
 
 
-        <div class="footer">
+        <div  class="footer">
             Lorem ipsum dolor sit amet.
           </div>
     </div>
@@ -216,71 +216,23 @@
                 p4.innerText = "Trener: " + d;
                 p5.innerText = "Czas trwania: " + e;
 
-                location.href="#popup1"
+                location.href="#popup1";
             }
         }
         
-        var aktualnosci = document.getElementById("sinol");
-        var cennik = document.getElementById("cennik");
-        var galeria = document.getElementById("headline");
-        var galeria2 = document.getElementById("carousel-wrapper");
-        var terminarz = document.getElementById("terminarz");
-        var kontakt = document.getElementById("contactAndHours");
-        var kontakt2 = document.getElementById("map");
-        var title = document.getElementById("title");
-        
+        var divs = document.getElementsByClassName("div");
 
-        function eloelo(){
-            aktualnosci.style.zIndex = 0
-            cennik.style.zIndex = 0
-            galeria.style.zIndex = 0
-            galeria2.style.zIndex = 0
-            terminarz.style.zIndex = 0
-            kontakt.style.zIndex = 0
-            kontakt2.style.zIndex = 0
-            aktualnosci.style.opacity = 0
-            cennik.style.opacity = 0
-            galeria.style.opacity = 0
-            galeria2.style.opacity = 0
-            terminarz.style.opacity = 0
-            kontakt.style.opacity = 0
-            kontakt2.style.opacity = 0
+        function disapear(a){
+            for(i = 0; i < divs.length; i++){
+                divs[i].style.zIndex = 0;
+                divs[i].style.opacity = 0;
+            }
+            title.innerHTML = a;
         }
 
         function change(a){
-            eloelo();
-            switch (a){
-                case 1: 
-                    aktualnosci.style.zIndex = 1;
-                    aktualnosci.style.opacity = 1;
-                    title.innerHTML = "aktualności";
-                    break
-                case 2: 
-                    cennik.style.zIndex = 1;
-                    cennik.style.opacity = 1;
-                    title.innerHTML = "cennik";
-                    break
-                case 3: 
-                    galeria.style.zIndex = 1;
-                    galeria.style.opacity = 1;
-                    galeria2.style.zIndex = 1;
-                    galeria2.style.opacity = 1;
-                    title.innerHTML = "galeria";
-                    break
-                case 4: 
-                    terminarz.style.zIndex = 1;
-                    terminarz.style.opacity = 1;
-                    title.innerHTML = "terminarz";
-                    break
-                case 5: 
-                    kontakt.style.zIndex = 1;
-                    kontakt.style.opacity = 1;
-                    kontakt2.style.zIndex = 1;
-                    kontakt2.style.opacity = 1;
-                    title.innerHTML = "kontakt";
-                    break
-
-            }
+            divs[a].style.zIndex = 1;
+            divs[a].style.opacity = 1;
         }
     </script>
 </body>
