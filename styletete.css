@@ -74,7 +74,7 @@ body{
   grid-column-start:1;
   grid-column-end:6;
   grid-row-start: 6;
-  grid-row-end: 30;
+  grid-row-end: 9;
   margin-left: 50px;
   margin-right: 50px;
   background-color: rgb(19, 19, 19);
@@ -310,6 +310,12 @@ td{
   }
   .arrow{
     border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 12px;
+  }
+  .arrow:hover{
+    border: solid rgb(255, 244, 42);
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 12px;
