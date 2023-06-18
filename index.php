@@ -56,19 +56,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styletete.css">
-    <title id="title">terminarz</title>
+    <title id="title">aktualności</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="icon2.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="banner">
+    <div id="container">
+        <div class="content" id="banner">
             <img src="p.svg" alt="zdjęcie">
         </div>
-        <div class="xd"></div>
-        <div class="nav">
+        <div class="content" id="nav">
             <ul>
                 <li><a onclick="disapear('aktualności'), change(0)"><b>aktualności</b></a></li>
                 <li><a onclick="disapear('cennik'), change(1)"><b>cennik</b></a></li>
@@ -79,7 +78,7 @@
         </div>
 
 
-        <div class="div" id="sinol">
+        <div class="div content" id="news">
             <h2>Aktualności</h2>
         <?php
             if (mysqli_num_rows($newsSelectQueryResult) > 0) {
@@ -91,7 +90,7 @@
                 </div>
 
 
-        <div class="div" id="cennik">
+        <div class="div content" id="priceList">
             <h2>Cennik</h2>
             <table style="width:100%">
             <tr>
@@ -112,10 +111,10 @@
         </div>
 
 
-        <div class="div" id="headline">
+        <div class="div content" id="headline">
           <h2>Galeria</h2>
         </div>
-        <div class="div" id="carousel-wrapper">
+        <div class="div content" id="carousel-wrapper">
           <span id="item-1"></span>
           <span id="item-2"></span>
           <span id="item-3"></span>
@@ -148,7 +147,7 @@
         </div>
 
 
-        <div class="div" id="terminarz">
+        <div class="div content" id="schedue">
             <h2>Terminarz</h2>
             <table style="width:100%">
                 <tr>
@@ -163,7 +162,7 @@
         </div>
 
 
-        <div class="div" id="contactAndHours">
+        <div class="div content" id="contactAndHours">
             <div class="contact">
                 <h2>Kontakt:</h2>
                 <p>nr.telefonu: 518 518 476</p>
@@ -176,12 +175,12 @@
                 <p>Nd:  15:00 - 20:00</p>
             </div>
         </div>
-        <div class="div" id="map">
+        <div class="div content" id="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d257611.57911911956!2d-157.3792604724713!3d2.056899439270722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a02a1b43964bd51%3A0xef0431f28d5a2026!2sSand%20Beach%20Restaurant!5e1!3m2!1spl!2spl!4v1641895432170!5m2!1spl!2spl"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
 
 
-        <div  class="footer">
+        <div  id="footer">
             Lorem ipsum dolor sit amet.
           </div>
     </div>
@@ -234,6 +233,8 @@
             divs[a].style.zIndex = 1;
             divs[a].style.opacity = 1;
         }
+        disapear('aktualności'); 
+        change(0);
     </script>
 </body>
 </html>

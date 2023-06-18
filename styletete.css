@@ -6,7 +6,7 @@ body{
     cursor:default;
 }
 
-.container{
+#container{
   max-width: 1300px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -16,77 +16,100 @@ body{
   background-color: rgb(19, 19, 19);
 }
 
-.banner{
+.content{
+  grid-column-start:1;
+  grid-column-end:6;
+  grid-row-start: 6;
+}
+
+#banner{
     background-color: rgba(137, 43, 226, 0);
-    grid-column-start:1;
-    grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 5;
 }
 
-.xd{
-    background-color: rgb(255, 255, 0);
-    grid-column-start:1;
-    grid-column-end: 6;
+
+#nav{
     grid-row-start: 5;
     grid-row-end: 6;
 }
 
-.nav{
-    background-color: rgb(139, 65, 46);
-    grid-column-start:1;
-    grid-column-end: 6;
-    grid-row-start: 5;
-    grid-row-end: 6;
-}
 
-.elo{
-    z-index: 0;
-    background-color: rgb(71, 75, 71);
-    grid-column-start:1;
-    grid-column-end: 6;
-    grid-row-start: 9;
-    grid-row-end: 18;
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-.uu{
-    grid-column-start:1;
-    grid-column-end: 3;
-    grid-row-start: 6;
-    grid-row-end: 9;
-    color: aliceblue;
-    margin-left: 50px;
-}
-
-.ajajajaj{
-    grid-column-start:4;
-    grid-column-end:6;
-    grid-row-start: 6;
-    grid-row-end: 9;
-    color: aliceblue;
-    margin-right: 50px;
-}
-
-#sinol{
-    z-index: 0;
-  grid-column-start:1;
-  grid-column-end:6;
-  grid-row-start: 6;
+#news{
+  z-index: 1;
   grid-row-end: 9;
   margin-left: 50px;
   margin-right: 50px;
   background-color: rgb(19, 19, 19);
   opacity: 1;
-            transition: opacity 1s;
+  transition: opacity 1s;
 }
 
-h3, p{
-  margin: 0;
+#priceList{
+  z-index: 0;
+  grid-row-end: 15;
+  margin-left: 50px;
+  margin-right: 50px;
+  opacity: 1;
+  transition: opacity 1s;
 }
 
-.footer{
+#headline{
+  grid-row-end: 7;
+  color: aliceblue;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: rgb(19, 19, 19);
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+#carousel-wrapper{
+    z-index: 0;
+    opacity: 0;
+    grid-row-start: 7;
+    grid-row-end: 18;
+    color: aliceblue;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: rgb(19, 19, 19);
+}
+
+#schedue{
+  z-index: 0;
+  grid-column-start:1;
+  grid-column-end: 6;
+  grid-row-start: 6;
+  grid-row-end: 15;
+  margin-left: 50px;
+  margin-right: 50px;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+#map{
+  grid-row-start: 9;
+  z-index: 0;
+  grid-row-end: 18;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: rgb(19, 19, 19);
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#contactAndHours{
+  z-index: 0;
+  grid-row-end: 9;
+  color: rgb(255, 255, 255);
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: rgb(19, 19, 19);
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#footer{
   background-color: rgb(42, 42, 42);
   color: white;
   grid-column-start:1;
@@ -96,98 +119,17 @@ h3, p{
   padding: 10px;
 }
 
-.footer2{
-  background-color: rgb(42, 42, 42);
-  color: white;
-  grid-column-start:1;
-  grid-column-end:6;
-  grid-row-start: 31;
-  grid-row-end: 33;
-  padding: 10px;
-}
-
-.form{
-  background-color: rgb(19, 19, 19);
-  grid-column-start: 1;
-  grid-column-end: 6;
-  grid-row-start: 1;
-  grid-row-end: 10;
-}
-
-.siemasiemasiema{
-    width: 12.5%;
-}
-
-table td:hover{
-    background-color: rgb(67, 69, 71);
-}
-
-.skrrt{
-    margin-top: 10%;
-}
-
-.pumpum{
-    margin-top: 10%;
-    float: right;
-}
-
-
-#headline{
-  grid-column-start:1;
-  grid-column-end:6;
-  grid-row-start: 6;
-  grid-row-end: 7;
-  color: aliceblue;
-  margin-left: 50px;
-  margin-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 1;
-            transition: opacity 1s;
-}
-
-#carousel-wrapper{
-    z-index: 0;
-    grid-column-start:1;
-    grid-column-end:6;
-    grid-row-start: 7;
-    grid-row-end: 18;
-    color: aliceblue;
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: rgb(19, 19, 19);
-}
-
-#map{
-    z-index: 1;
-  grid-column-start:1;
-  grid-column-end:6;
-  grid-row-start: 9;
-  grid-row-end: 18;
-  padding-left: 50px;
-  padding-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 1;
-            transition: opacity 1s;
-}
-
-#contactAndHours{
-    z-index: 1;
-  grid-column-start:1;
-  grid-column-end:6;
-  grid-row-start: 6;
-  grid-row-end: 9;
-  color: rgb(255, 255, 255);
-  padding-left: 50px;
-  padding-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 1;
-            transition: opacity 1s;
-}
-
 #contactAndHours h2{
   margin: 20px 0px 10px 0;
 }
 
+h3, p{
+  margin: 0;
+}
+
+table td:hover{
+  background-color: rgb(67, 69, 71);
+}
 .contact{
   float: right;
   width: 250px;
@@ -249,29 +191,7 @@ iframe{
     font-size: 20px;
 }
 
-#cennik{
-    z-index: 0;
-    grid-column-start:1;
-    grid-column-end: 6;
-    grid-row-start: 6;
-    grid-row-end: 15;
-    margin-left: 50px;
-    margin-right: 50px;
-    opacity: 1;
-            transition: opacity 1s;
-}
 
-#terminarz{
-    z-index: 0;
-    grid-column-start:1;
-    grid-column-end: 6;
-    grid-row-start: 6;
-    grid-row-end: 15;
-    margin-left: 50px;
-    margin-right: 50px;
-    opacity: 1;
-            transition: opacity 1s;
-}
 
 table{
     width: 100%;
@@ -379,7 +299,7 @@ td{
 
   @media only screen and (max-width: 912px) {
 
-    .cennik{
+    #cennik{
         grid-column-start:1;
         grid-column-end: 6;
         grid-row-start: 10;
@@ -389,7 +309,7 @@ td{
         margin-top: 15px;
     }
 
-    .nav{
+    #nav{
       background-color: rgb(139, 65, 46);
       grid-column-start:1;
       grid-column-end: 6;
@@ -397,7 +317,7 @@ td{
       grid-row-end: 10;
     }
 
-    .terminarz{
+    #terminarz{
       grid-column-start:1;
       grid-column-end: 6;
       grid-row-start: 10;
@@ -407,7 +327,7 @@ td{
       margin-top: 15px;
     }
 
-    .carousel-wrapper{
+    #carousel-wrapper{
       grid-column-start:1;
       grid-column-end:6;
       grid-row-start: 10;
@@ -417,10 +337,40 @@ td{
       width: 100%;
     }
 
-    .sinol{
+    #headline{
       grid-column-start:1;
       grid-column-end:6;
       grid-row-start: 10;
+      grid-row-end: 11;
+      margin-left: 25px;
+      margin-right: 25px;
+      padding-top: 25px;
+    }
+
+    #sinol{
+      grid-column-start:1;
+      grid-column-end:6;
+      grid-row-start: 11;
+      grid-row-end: 30;
+      margin-left: 25px;
+      margin-right: 25px;
+      padding-top: 25px;
+    }
+
+    #contactAndHours{
+      grid-column-start:1;
+      grid-column-end:6;
+      grid-row-start: 11;
+      grid-row-end: 30;
+      margin-left: 25px;
+      margin-right: 25px;
+      padding-top: 25px;
+    }
+
+    #map{
+      grid-column-start:1;
+      grid-column-end:6;
+      grid-row-start: 11;
       grid-row-end: 30;
       margin-left: 25px;
       margin-right: 25px;
