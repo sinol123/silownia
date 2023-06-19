@@ -69,10 +69,15 @@ body{
     opacity: 0;
     grid-row-start: 7;
     grid-row-end: 18;
-    color: aliceblue;
+    display: block;
+    border: 2px solid white;
     margin-left: 50px;
     margin-right: 50px;
+    margin-top: 20px;
     background-color: rgb(19, 19, 19);
+    opacity: 1;
+    transition: opacity 1s;
+    position: relative;
 }
 
 #schedue{
@@ -207,16 +212,6 @@ td{
     padding: 4px;
 }
 
-#carousel-wrapper {
-    height: 100% - 20px;
-    position: relative;
-    margin-top: 20px;
-    width: 100% - 100px;
-    display: block;
-    border: 2px solid white;
-    opacity: 1;
-            transition: opacity 1s;
-  }
   
   .carousel-item {
     position: absolute;
@@ -344,7 +339,7 @@ td{
       grid-row-end: 23;
       color: aliceblue;
       margin: 0px;
-      width: 100%;
+      width: 100% - 4px;
     }
 
     #headline{
