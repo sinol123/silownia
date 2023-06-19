@@ -3,10 +3,67 @@ body{
     background-color: rgb(0, 0, 0);
     font-family: 'Be Vietnam Pro', sans-serif;
     color: white;
-    cursor:default;
 }
 
-#container{
+input.submit{
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: white 1px solid;
+  width: 100px;
+  height: 30px;
+}
+
+input.logout{
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: white 1px solid;
+}
+
+#banerImg{
+    height: 160px;
+}
+
+input.submit:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+td.postTd1{
+  width:21px;
+}
+
+div#terminarz{
+  margin-top: 2.5%;
+}
+
+div#cennik{
+  margin-top: 2.5%;
+}
+
+h3{
+  margin-top: 0;
+}
+
+div.schedueForm {
+  width: 285px;
+  text-align: right;
+  display: inline-block;
+  height: 220px;
+}
+
+div.schedueForm h2{
+  text-align: center;
+}
+
+div.schedueForm select{
+  width: 177px;
+}
+
+
+#classesSubmit{
+  text-align: left;
+}
+
+.container{
   max-width: 1300px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -16,100 +73,41 @@ body{
   background-color: rgb(19, 19, 19);
 }
 
-.content{
-  grid-column-start:1;
-  grid-column-end:6;
-  grid-row-start: 6;
-}
-
-#banner{
+.banner{
     background-color: rgba(137, 43, 226, 0);
+    grid-column-start:1;
+    grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 5;
 }
 
-
-#nav{
+.xd{
+    background-color: rgb(255, 255, 0);
+    grid-column-start:1;
+    grid-column-end: 6;
     grid-row-start: 5;
     grid-row-end: 6;
 }
 
-
-#news{
-  z-index: 1;
-  grid-row-end: 9;
-  margin-left: 50px;
-  margin-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 1;
-  transition: opacity 1s;
+.nav{
+    background-color: rgb(139, 65, 46);
+    grid-column-start:1;
+    grid-column-end: 6;
+    grid-row-start: 5;
+    grid-row-end: 6;
 }
 
-#priceList{
-  z-index: 0;
-  grid-row-end: 15;
-  margin-left: 50px;
-  margin-right: 50px;
-  opacity: 1;
-  transition: opacity 1s;
-}
-
-#headline{
-  grid-row-end: 7;
-  color: aliceblue;
-  margin-left: 50px;
-  margin-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 1;
-  transition: opacity 1s;
-}
-
-#carousel-wrapper{
-    z-index: 0;
-    opacity: 0;
-    grid-row-start: 7;
-    grid-row-end: 18;
-    color: aliceblue;
-    margin-left: 50px;
-    margin-right: 50px;
-    background-color: rgb(19, 19, 19);
-}
-
-#schedue{
-  z-index: 0;
+.content{
   grid-column-start:1;
-  grid-column-end: 6;
+  grid-column-end:6;
   grid-row-start: 6;
-  grid-row-end: 15;
+  grid-row-end: 20;
   margin-left: 50px;
   margin-right: 50px;
-  opacity: 1;
-  transition: opacity 1s;
 }
 
-#map{
-  grid-row-start: 9;
-  z-index: 0;
-  grid-row-end: 18;
-  padding-left: 50px;
-  padding-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 0;
-  transition: opacity 1s;
-}
 
-#contactAndHours{
-  z-index: 0;
-  grid-row-end: 9;
-  color: rgb(255, 255, 255);
-  padding-left: 50px;
-  padding-right: 50px;
-  background-color: rgb(19, 19, 19);
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-#footer{
+.footer{
   background-color: rgb(42, 42, 42);
   color: white;
   grid-column-start:1;
@@ -119,35 +117,99 @@ body{
   padding: 10px;
 }
 
-#contactAndHours h2{
-  margin: 20px 0px 10px 0;
+.footer2{
+  background-color: rgb(42, 42, 42);
+  color: white;
+  grid-column-start:1;
+  grid-column-end:6;
+  grid-row-start: 31;
+  grid-row-end: 33;
+  padding: 10px;
 }
 
-h3, p{
-  margin: 0;
+.form{
+  background-color: rgb(19, 19, 19);
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 10;
 }
 
-table td:hover{
-  background-color: rgb(67, 69, 71);
-}
-.contact{
-  float: right;
-  width: 250px;
+#kontakt{
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 6;
+  grid-row-end: 19;
 }
 
 .hours{
+  height: 95px;
+  margin-top: 20px;
+  color: aliceblue;
+  margin-left: 50px;
+  display: inline-block;
   float: left;
-  width: 250px;
+  margin-bottom: 20px;
 }
 
+.map{
+  height: 475px;
+}
 
+.adres{
+  height: 95px;
+  margin-top: 20px;
+  color: aliceblue;
+  margin-right: 50px;
+  display: inline-block;
+  float: right;
+}
+
+#leftBlock{
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+
+#rightBlock{
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+}
+
+.siemasiemasiema{
+    width: 12.5%;
+}
+
+table td:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.skrrt{
+    margin-top: 10%;
+}
+
+.pumpum{
+    margin-top: 10%;
+    float: right;
+}
+
+#carousel-wrapper{
+    grid-column-start:1;
+    grid-column-end:6;
+    grid-row-start: 6;
+    grid-row-end: 17;
+    color: aliceblue;
+    margin-left: 50px;
+    margin-right: 50px;
+}
 
 ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(255, 212, 42);
+    background-color: rgb(255, 255, 0);
     height: 50px;
 }
 
@@ -156,12 +218,13 @@ li{
     width: 20%;
 }
   
-li a{
+li button{
     display: block;
     color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 0);
     text-align: center;
-    text-decoration: none;
-    padding: 16px 16px;
+    width: 100%;
+    height: 50px;
 }
 
 .admin{
@@ -173,8 +236,8 @@ li a{
 }
   
   /* Change the link color to #111 (black) on hover */
-li a:hover{
-background-color: rgb(255, 244, 42);
+li button:hover{
+    background-color: rgb(214, 160, 0);
 }
 
 img{
@@ -191,7 +254,9 @@ iframe{
     font-size: 20px;
 }
 
-
+p{
+    margin: 2px
+}
 
 table{
     width: 100%;
@@ -207,15 +272,18 @@ td{
     padding: 4px;
 }
 
+#cennik td{
+  width: 50%;
+}
 #carousel-wrapper {
-    height: 100% - 20px;
+    height: 100%;
     position: relative;
-    margin-top: 20px;
-    width: 100% - 100px;
+    width: 90% ;
     display: block;
+    margin-top: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
     border: 2px solid white;
-    opacity: 1;
-            transition: opacity 1s;
   }
   
   .carousel-item {
@@ -230,12 +298,6 @@ td{
   }
   .arrow{
     border: solid white;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 12px;
-  }
-  .arrow:hover{
-    border: solid rgb(255, 244, 42);
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 12px;
@@ -299,7 +361,7 @@ td{
 
   @media only screen and (max-width: 912px) {
 
-    #cennik{
+    .cennik{
         grid-column-start:1;
         grid-column-end: 6;
         grid-row-start: 10;
@@ -309,7 +371,7 @@ td{
         margin-top: 15px;
     }
 
-    #nav{
+    .nav{
       background-color: rgb(139, 65, 46);
       grid-column-start:1;
       grid-column-end: 6;
@@ -317,7 +379,7 @@ td{
       grid-row-end: 10;
     }
 
-    #terminarz{
+    .terminarz{
       grid-column-start:1;
       grid-column-end: 6;
       grid-row-start: 10;
@@ -327,7 +389,7 @@ td{
       margin-top: 15px;
     }
 
-    #carousel-wrapper{
+    .carousel-wrapper{
       grid-column-start:1;
       grid-column-end:6;
       grid-row-start: 10;
@@ -337,40 +399,10 @@ td{
       width: 100%;
     }
 
-    #headline{
+    .sinol{
       grid-column-start:1;
       grid-column-end:6;
       grid-row-start: 10;
-      grid-row-end: 11;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 25px;
-    }
-
-    #sinol{
-      grid-column-start:1;
-      grid-column-end:6;
-      grid-row-start: 11;
-      grid-row-end: 30;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 25px;
-    }
-
-    #contactAndHours{
-      grid-column-start:1;
-      grid-column-end:6;
-      grid-row-start: 11;
-      grid-row-end: 30;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 25px;
-    }
-
-    #map{
-      grid-column-start:1;
-      grid-column-end:6;
-      grid-row-start: 11;
       grid-row-end: 30;
       margin-left: 25px;
       margin-right: 25px;
@@ -386,26 +418,6 @@ td{
       grid-row-end: 42;
     }
 
-
-    .uu{
-      grid-column-start:1;
-      grid-column-end: 3;
-      grid-row-start: 10;
-      grid-row-end: 13;
-      color: aliceblue;
-      margin-left: 25px;
-      margin-top: 15px;
-    }
-  
-    .ajajajaj{
-      grid-column-start:4;
-      grid-column-end:6;
-      grid-row-start: 10;
-      grid-row-end: 13;
-      color: aliceblue;
-      margin-right: 25px;
-      margin-top: 15px;
-    }
 
     .elo{
       background-color: rgb(71, 75, 71);
@@ -479,120 +491,4 @@ td{
     margin-left: 25px;
     margin-right: 25px;
 }
-}
-.popup-box {
-  width: 400px;
-  background-color: rgb(40, 40, 40);
-  padding: 30px;
-  font-size: 36px;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  display: none;
-}
-.popup-box span {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 20px;
-  height: 200px;
-  background-color: red;
-  color: white;
-  padding: 5px;
-  border-radius: 50%;
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-h1 {
-  text-align: center;
-  font-family: Tahoma, Arial, sans-serif;
-  color: rgb(255, 212, 42);
-  margin: 100px 0;
-}
-
-.box {
-  width: 20%;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 35px;
-  border: 2px solid #fff;
-  border-radius: 20px/50px;
-  background-clip: padding-box;
-  text-align: center;
-}
-
-.button {
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-}
-
-.button:hover {
-  background: rgb(255, 255, 0 );
-  color: #fff;
-}
-
-.overlay {
-  position: absolute;
-  top: -300px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);  
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-  top:0px;
-}
-
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: rgb(40, 40, 40);
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-
-.popup h2 {
-  margin-top: 0;
-  margin-bottom: 5px;
-  color: rgb(255, 212, 42);
-  font-family: Tahoma, Arial, sans-serif;
-}
-
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  cursor: default
-  
-}
-
-.popup .close:hover {
-  color: rgb(255, 212, 42);
-  transform: rotate(90deg);
-}
-
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
 }

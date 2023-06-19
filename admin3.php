@@ -45,7 +45,7 @@ if(isset($_SESSION['klucz1'])){
                             session_start();
                             $_SESSION['klucz1'] = "Jesteś zalogowany jako: ".$row["login"];
                         }
-                        header("Location: test/test.php");
+                        header("Location: admin4.php");
                     }
                     else {
                         echo "nie ma takiego użytkownika :00";

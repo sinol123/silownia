@@ -24,7 +24,7 @@ $conn = mysqli_connect($servername, $username, $dbpassword, $dbname);
 #priceListUpdate
 if(isset($_POST['priceListSubmit'])){
     for ($i = 1; $i < 5; $i++) {
-        $priceListUpdateQuery = "UPDATE cennik SET product = '" . $_POST['product' . $i] . "', price = '" . $_POST['price' . $i] . "' WHERE `cennik`.`id` =" . $i;
+        $priceListUpdateQuery = "UPDATE priceList SET product = '" . $_POST['product' . $i] . "', price = '" . $_POST['price' . $i] . "' WHERE `cennik`.`id` =" . $i;
         mysqli_query($conn, $priceListUpdateQuery);
      }
      echo "<script>alert('cennik zaktualizowany :))')</script>";
@@ -148,7 +148,7 @@ if(isset($_POST['showSubmit'])){
                 </tr>
                 <?php
                     #displayPriceList
-                    $priceListSelectQuery = "SELECT * FROM cennik";
+                    $priceListSelectQuery = "SELECT * FROM priceList";
                     $priceListSelectQueryResult = mysqli_query($conn, $priceListSelectQuery);
 
                     if(mysqli_num_rows($priceListSelectQueryResult) > 0){
